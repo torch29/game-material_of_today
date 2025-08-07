@@ -1,0 +1,15 @@
+.home {
+    width: 90%;
+    margin: 20px auto;
+}
+
+.section__title {
+    margin: 20px 0;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+.date {
+    text-align: center;
+    font-size: large;
+}

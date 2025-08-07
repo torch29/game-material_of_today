@@ -15,6 +15,10 @@ class CreateSkillMaterialsTable extends Migration
     {
         Schema::create('skill_materials', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('day_of_week');
+            $table->foreignId('area_id');
+            $table->foreignId('character_id');
             $table->timestamps();
         });
     }
@@ -26,6 +30,11 @@ class CreateSkillMaterialsTable extends Migration
      */
     public function down()
     {
+        Schema::table('skill_materials', function (Blueprint $table) {
+            $table->dropForeign(['area_id']);
+            $table->dropForeign(['character_id']);
+        });
+
         Schema::dropIfExists('skill_materials');
     }
 }

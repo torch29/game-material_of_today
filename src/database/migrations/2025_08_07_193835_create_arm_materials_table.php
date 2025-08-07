@@ -15,6 +15,10 @@ class CreateArmMaterialsTable extends Migration
     {
         Schema::create('arm_materials', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('day_of_week');
+            $table->foreignId('area_id');
+            $table->foreign('arm_id');
             $table->timestamps();
         });
     }
@@ -26,6 +30,11 @@ class CreateArmMaterialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('arm_materials');
+        Schema::table('skill_materials', function (Blueprint $table) {
+            $table->dropForeign(['area_id']);
+            $table->dropForeign(['arm_id']);
+        });
+
+        Schema::dropIfExists('skill_materials');
     }
 }

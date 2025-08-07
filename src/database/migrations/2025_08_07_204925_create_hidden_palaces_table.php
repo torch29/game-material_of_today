@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArmsTable extends Migration
+class CreateHiddenPalacesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateArmsTable extends Migration
      */
     public function up()
     {
-        Schema::create('arms', function (Blueprint $table) {
+        Schema::create('hidden_palaces', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
+            $table->string('name');
+            $table->foreignId('area_id');
             $table->timestamps();
         });
     }
@@ -27,6 +28,10 @@ class CreateArmsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('arms');
+        Schema::table('hidden_palaces', function (Blueprint $table) {
+            $table->dropForeign(['area_id']);
+        });
+
+        Schema::dropIfExists('hidden_palaces');
     }
 }

@@ -15,6 +15,10 @@ class CreateCharactersTable extends Migration
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('area_id')->nullable();
+            $table->foreignId('element_id');
+            $table->foreign('arm_id');
             $table->timestamps();
         });
     }
@@ -26,6 +30,12 @@ class CreateCharactersTable extends Migration
      */
     public function down()
     {
+        Schema::table('characters', function (Blueprint $table) {
+            $table->dropForeign(['area_id']);
+            $table->dropForeign(['element_id']);
+            $table->dropForeign(['arm_id']);
+        });
+
         Schema::dropIfExists('characters');
     }
 }
