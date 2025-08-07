@@ -13,4 +13,19 @@ class HiddenPalace extends Model
         'name',
         'area_id',
     ];
+
+    public function can_mine_arm_materials()
+    {
+        return $this->hasMany(ArmMaterial::class);
+    }
+
+    public function can_mine_skill_materials()
+    {
+        return $this->hasMany(SkillMaterial::class);
+    }
+
+    public function placed_area()
+    {
+        return $this->belongsTo(Area::class);
+    }
 }

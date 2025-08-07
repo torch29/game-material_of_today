@@ -12,4 +12,9 @@ class Element extends Model
     protected $fillable = [
         'type',
     ];
+
+    public function using_characters()
+    {
+        return $this->hasMany(Character::class);
+    }
 }

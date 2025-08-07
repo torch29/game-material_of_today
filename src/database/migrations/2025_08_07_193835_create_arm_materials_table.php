@@ -17,7 +17,7 @@ class CreateArmMaterialsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('day_of_week');
-            $table->foreignId('area_id');
+            $table->foreignId('hidden_palace_id');
             $table->foreign('arm_id');
             $table->timestamps();
         });

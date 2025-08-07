@@ -12,4 +12,14 @@ class Arm extends Model
     protected $fillable = [
         'type',
     ];
+
+    public function arm_materials()
+    {
+        return $this->hasMany(ArmMaterial::class);
+    }
+
+    public function using_characters()
+    {
+        return $this->hasMany(Character::class);
+    }
 }
