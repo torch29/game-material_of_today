@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class HiddenPalace extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'area_id',
+    ];
 }

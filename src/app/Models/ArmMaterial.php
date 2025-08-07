@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ArmMaterial extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'day_of_week',
+        'area_id',
+        'arm_id',
+    ];
 }
